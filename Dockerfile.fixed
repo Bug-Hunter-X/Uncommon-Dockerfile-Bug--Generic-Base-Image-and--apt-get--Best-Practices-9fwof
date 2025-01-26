@@ -1,0 +1,7 @@
+FROM python:3.9-slim-buster
+RUN apt-get update && apt-get install -y --no-install-recommends python3-pip
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+CMD ["python3", "/app/main.py"]
+RUN apt-get clean && apt-get autoremove -y
